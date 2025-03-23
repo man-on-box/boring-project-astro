@@ -1,11 +1,70 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import MetricCard from "../components/MetricCard.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const metrics = [
+  {
+    value: "1,234",
+    label: "Lines of Code",
+    icon: "code",
+  },
+  {
+    value: "400",
+    label: "Dependencies",
+    icon: "cube",
+  },
+  {
+    value: "19",
+    label: "Dependabot alerts",
+    icon: "alert",
+  },
+  {
+    value: "100",
+    label: "Performance",
+    icon: "chart",
+  },
+];
 ---
 
 <Layout>
-	<Welcome />
+  <div class="max-w-3xl w-full space-y-12 text-center">
+    <div class="space-y-4">
+      <div
+        class="inline-block px-3 py-1 mb-2 text-sm font-medium text-pink-700 bg-pink-100 rounded-full"
+      >
+        Astro Project
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight">
+        This page was built with <span class="text-pink-600"
+          ><a class="underline" href="https://astro.build/">Astro</a></span
+        >
+      </h1>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+        Welcome to most boring project showcase. These metrics are just
+        placeholders.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        metrics.map((metric) => (
+          <MetricCard
+            value={metric.value}
+            label={metric.label}
+            icon={metric.icon}
+          />
+        ))
+      }
+    </div>
+
+    <div class="pt-4">
+      <!-- <Button -->
+      <!--   asChild -->
+      <!--   size="lg" -->
+      <!--   class="bg-pink-600 hover:bg-pink-700 shadow-lg shadow-pink-200 transition-all hover:scale-105" -->
+      <!-- > -->
+      <!--   <Link href="/about">About This Project</Link> -->
+      <!-- </Button> -->
+    </div>
+  </div>
 </Layout>
